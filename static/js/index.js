@@ -1,17 +1,25 @@
 //https://www.eclipse.org/paho/clients/js/
 
-function LED1_On() {
-	alert("led on");
-	console.log("led on");
-	document.getElementById("sensor").innerHTML="led on";
-  
+function Encender1() {
+	message = new Paho.MQTT.Message("L1O");
+    message.destinationName = "imcs_1544c@hotmail.com/raspberry";
+    client.send(message);
 }
-function LED1_Off(){	
-	alert("led off");
-	console.log("led off");
-	document.getElementById("sensor").innerHTML="led off";
+function Apagar1() {
+	message = new Paho.MQTT.Message("L1N");
+    message.destinationName = "imcs_1544c@hotmail.com/raspberry";
+    client.send(message);
 }
-
+function Encender2() {
+	message = new Paho.MQTT.Message("L2O");
+    message.destinationName = "imcs_1544c@hotmail.com/raspberry";
+    client.send(message);
+}
+function Apagar2() {
+	message = new Paho.MQTT.Message("L2N");
+    message.destinationName = "imcs_1544c@hotmail.com/raspberry";
+    client.send(message);
+}
 
 
 // Create a client instance
@@ -59,5 +67,16 @@ function LED1_Off(){
 
   // called when a message arrives
   function onMessageArrived(message) {
-    console.log("onMessageArrived:"+message.payloadString);
+	 texto=(message.payloadString);
+     text=(message.payloadString).split(" ")[0];
+	 console.log(texto)
+	 if (text=="Luz1"){
+	  document.getElementById("estado1").innerHTML = texto;
+	 }
+     else if (text=="Luz2"){
+	  document.getElementById("estado2").innerHTML = texto;
+	 }
+  
+  
   }
+  
