@@ -1,5 +1,6 @@
 //https://www.eclipse.org/paho/clients/js/
 
+
 function Encendido_led1() {
 	message = new Paho.MQTT.Message("f1");
     message.destinationName = "imcs_1544c@hotmail.com/raspberry";
@@ -69,10 +70,10 @@ function Apagado_led2() {
 	 texto=(message.payloadString);
      text=(message.payloadString).split(" ")[0];
 	 console.log(texto)
-	 if (text=="LED1"){
+	 if (text=="led1"){
 	  document.getElementById("led_1").innerHTML = texto;
 	 }
-     else if (text=="LED2"){
+     else if (text=="led2"){
 	  document.getElementById("led_2").innerHTML = texto;
 	 }
   
