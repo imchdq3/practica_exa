@@ -1,22 +1,22 @@
 //https://www.eclipse.org/paho/clients/js/
 
-function Encender1() {
-	message = new Paho.MQTT.Message("L1O");
+function Encendido_led1() {
+	message = new Paho.MQTT.Message("f1");
     message.destinationName = "imcs_1544c@hotmail.com/raspberry";
     client.send(message);
 }
-function Apagar1() {
-	message = new Paho.MQTT.Message("L1N");
+function Apagado_led2() {
+	message = new Paho.MQTT.Message("f11");
     message.destinationName = "imcs_1544c@hotmail.com/raspberry";
     client.send(message);
 }
-function Encender2() {
-	message = new Paho.MQTT.Message("L2O");
+function Encendido_led2() {
+	message = new Paho.MQTT.Message("f2");
     message.destinationName = "imcs_1544c@hotmail.com/raspberry";
     client.send(message);
 }
-function Apagar2() {
-	message = new Paho.MQTT.Message("L2N");
+function Apagado_led2() {
+	message = new Paho.MQTT.Message("f22");
     message.destinationName = "imcs_1544c@hotmail.com/raspberry";
     client.send(message);
 }
@@ -70,11 +70,11 @@ function Apagar2() {
 	 texto=(message.payloadString);
      text=(message.payloadString).split(" ")[0];
 	 console.log(texto)
-	 if (text=="Luz1"){
-	  document.getElementById("estado1").innerHTML = texto;
+	 if (text=="LED1"){
+	  document.getElementById("led_1").innerHTML = texto;
 	 }
-     else if (text=="Luz2"){
-	  document.getElementById("estado2").innerHTML = texto;
+     else if (text=="LED2"){
+	  document.getElementById("led_2").innerHTML = texto;
 	 }
   
   
