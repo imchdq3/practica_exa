@@ -3,22 +3,22 @@
 
 function Encendido_led1() {
 	message = new Paho.MQTT.Message("f1");
-    message.destinationName = "imcs_1544c@hotmail.com/raspberry";
+    message.destinationName = "imcs_1544c@hotmail.com/examen";
     client.send(message);
 }
 function Apagado_led1() {
 	message = new Paho.MQTT.Message("f11");
-    message.destinationName = "imcs_1544c@hotmail.com/raspberry";
+    message.destinationName = "imcs_1544c@hotmail.com/examen";
     client.send(message);
 }
 function Encendido_led2() {
 	message = new Paho.MQTT.Message("f2");
-    message.destinationName = "imcs_1544c@hotmail.com/raspberry";
+    message.destinationName = "imcs_1544c@hotmail.com/examen";
     client.send(message);
 }
 function Apagado_led2() {
 	message = new Paho.MQTT.Message("f22");
-    message.destinationName = "imcs_1544c@hotmail.com/raspberry";
+    message.destinationName = "imcs_1544c@hotmail.com/examen";
     client.send(message);
 }
 
