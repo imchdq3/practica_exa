@@ -5,7 +5,7 @@ function Encendido_led1() {
     message.destinationName = "imcs_1544c@hotmail.com/raspberry";
     client.send(message);
 }
-function Apagado_led2() {
+function Apagado_led1() {
 	message = new Paho.MQTT.Message("f11");
     message.destinationName = "imcs_1544c@hotmail.com/raspberry";
     client.send(message);
@@ -20,7 +20,6 @@ function Apagado_led2() {
     message.destinationName = "imcs_1544c@hotmail.com/raspberry";
     client.send(message);
 }
-
 
 // Create a client instance
   //client = new Paho.MQTT.Client("postman.cloudmqtt.com", 14970);
