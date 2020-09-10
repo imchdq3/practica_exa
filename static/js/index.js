@@ -1,22 +1,22 @@
 //https://www.eclipse.org/paho/clients/js/
 
 
-function Encendido_led1() {
+function led1on() {
 	message = new Paho.MQTT.Message("f1");
 	message.destinationName = "imcs_1544c@hotmail.com/examen";
 	client.send(message);
 }
-function Apagado_led1() {
+function led1off() {
 	message = new Paho.MQTT.Message("f11");
 	message.destinationName = "imcs_1544c@hotmail.com/examen";
 	client.send(message);
 }
-function Encendido_led2() {
+function led2on() {
 	message = new Paho.MQTT.Message("f2");
 	message.destinationName = "imcs_1544c@hotmail.com/examen";
 	client.send(message);
 }
-function Apagado_led2() {
+function led2off() {
 	message = new Paho.MQTT.Message("f22");
 	message.destinationName = "imcs_1544c@hotmail.com/examen";
 	client.send(message);
