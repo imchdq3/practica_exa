@@ -1,0 +1,87 @@
+import paho.mqtt.client as mqtt 
+import time
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup (7, GPIO.OUT)
+GPIO.setup (11, GPIO.OUT)
+GPIO.setup (13, GPIO.IN)
+localtime = time.localtime(time.time())
+f=open("sensor.txt","w")
+def led1():
+	while(True):
+		if GPIO.input(13):
+			GPIO.output(7, True)
+			print("led encendido")
+			f.write("led encediido     "+"AHORA" +str(localtime)  +"\n")
+			mqttc.publish("imcs_1544c@hotmail.com/examen", "led1on")
+			time.sleep(1)
+	else:
+			print("led apagado")
+			f.write("led apagado    "+"AHORA" +str(localtime)  +"\n")
+			mqttc.publish("imcs_1544c@hotmail.com/examen", "led1off")
+	
+def led11():
+	while(True):
+		if GPIO.input(13):	
+			GPIO.output(7, False)
+			print("led apagado")
+			f.write("led apagado     "+"AHORA" +str(localltime) +"\n")
+			mqttc.publish("imcs_1544c@hotmail.com/examen", "led1off")
+	else:
+			print("led encendido")
+			f.write("led encendido   "+"AHORA" +str(localtime)  +"\n")
+			mqttc.publish("imcs_1544c@hotmail.com/examen", "led1on")	
+def led2():
+	while(True):
+		if GPIO.input(13):
+			GPIO.output(11, True)
+			print("led encendido")
+			f.write("led encediido     "+"AHORA" +str(localtime) +"\n")
+			mqttc.publish("imcs_1544c@hotmail.com/examen", "led2on")
+	else: 
+			print("led apagado")
+			f.write("led apagado    "+"AHORA" +str(localtime)  +"\n")
+			mqttc.publish("imcs_1544c@hotmail.com/examen", "led2off")
+def led22():
+	while(True):
+		if GPIO.input(13):
+			GPIO.output(11, False)
+			print("led apagado")
+			f.write("led apagado     "+"AHORA" +str(localtime) +"\n")
+			mqttc.publish("imcs_1544c@hotmail.com/examen", "led2off")
+	 else: 
+			print("led encendido")
+			f.write("led encendido   "+"AHORA" +str(localtime)  +"\n")
+			mqttc.publish("imcs_1544c@hotmail.com/examen", "led2on")	
+			
+			
+def on_message(client, obj, msg): 
+	accion=(msg.payload.decode("utf-8"))
+	print(accion)
+	if accion=="f1":
+		led1()
+	if accion=="f11":
+		led11()
+	if accion=="f2":
+		led2()
+	if accion=="f22":
+		led22()
+	
+	
+mqttc = mqtt.Client() 
+mqttc.on_message = on_message
+mqttc.username_pw_set("imcs_1544c@hotmail.com","imc.hdq19940705.") 
+mqttc.connect("maqiatto.com", 1883) 
+mqttc.subscribe("imcs_1544c@hotmail.com/raspberry", 0)
+rc=0
+print("Ilisto mijin ....")
+i=0
+
+while rc == 0:
+	time.sleep(2)
+	rc = mqttc.loop()
+	i=i+1
+	
+def main ():
+	pass
+	

@@ -1,22 +1,23 @@
 //https://www.eclipse.org/paho/clients/js/
 
 
-function led1on() {
+function led1on(){
 	message = new Paho.MQTT.Message("f1");
 	message.destinationName = "imcs_1544c@hotmail.com/examen";
 	client.send(message);
+	
 }
-function led1off() {
+function led1off(){
 	message = new Paho.MQTT.Message("f11");
 	message.destinationName = "imcs_1544c@hotmail.com/examen";
 	client.send(message);
 }
-function led2on() {
+function led2on(){
 	message = new Paho.MQTT.Message("f2");
 	message.destinationName = "imcs_1544c@hotmail.com/examen";
 	client.send(message);
 }
-function led2off() {
+function led2off(){
 	message = new Paho.MQTT.Message("f22");
 	message.destinationName = "imcs_1544c@hotmail.com/examen";
 	client.send(message);
@@ -30,11 +31,11 @@ client = new Paho.MQTT.Client("maqiatto.com", 8883, "web_" + parseInt(Math.rando
 	client.onConnectionLost = onConnectionLost;
 	client.onMessageArrived = onMessageArrived;
 	var options = {
-	useSSL: false,
-	userName: "imcs_1544c@hotmail.com",
-	password: "imc.hdq19940705.",
-	onSuccess:onConnect,
-	onFailure:doFail
+		useSSL: false,
+		userName: "imcs_1544c@hotmail.com",
+		password: "imc.hdq19940705.",
+		onSuccess:onConnect,
+		onFailure:doFail
 }
 
 // connect the client
