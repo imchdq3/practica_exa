@@ -1,23 +1,5 @@
 //https://www.eclipse.org/paho/clients/js/
-/*
-function LED1_On() {
-	
-	console.log("led on");
-	message = new Paho.MQTT.Message("LED_ON");
-	message.destinationName = "imcs_1544c@hotmail.com/test1";
-	client.send(message);
-	document.getElementById("estado").innerHTML="LED encendido";
-  
-}
-function LED1_Off(){	
-	
-	console.log("led off");
-	message = new Paho.MQTT.Message("LED_Off");
-	message.destinationName = "imcs_1544c@hotmail.com/test1";
-	client.send(message);
-	document.getElementById("estado").innerHTML="LED apagado";
-}
-*/
+
 
 // Create a client instance
 //client = new Paho.MQTT.Client("postman.cloudmqtt.com", 14970);
@@ -66,4 +48,39 @@ function onConnectionLost(responseObject) {
 	document.getElementById("led_1").innerHTML=message.payloadString.split("=")[2]
 	document.getElementById("led_2").innerHTML=message.payloadString.split("=")[1]
 	document.getElementById("hora").innerHTML=message.payloadString.split("=")[3]
+}
+function on1() {
 	
+	console.log("led on");
+	message = new Paho.MQTT.Message("LED_ON");
+	message.destinationName = "imcs_1544c@hotmail.com/test1";
+	client.send(message);
+	document.getElementById("estadoled1").innerHTML="LED encendido";
+  
+}
+function off1(){	
+	
+	console.log("led off");
+	message = new Paho.MQTT.Message("LED_Off");
+	message.destinationName = "imcs_1544c@hotmail.com/test1";
+	client.send(message);
+	document.getElementById("estadoled1").innerHTML="LED apagado";
+}
+
+function on2() {
+	
+	console.log("led on");
+	message = new Paho.MQTT.Message("LED_ON");
+	message.destinationName = "imcs_1544c@hotmail.com/test1";
+	client.send(message);
+	document.getElementById("estadoled2").innerHTML="LED encendido";
+  
+}
+function off2(){	
+	
+	console.log("led off");
+	message = new Paho.MQTT.Message("LED_Off");
+	message.destinationName = "imcs_1544c@hotmail.com/test1";
+	client.send(message);
+	document.getElementById("estadoled2").innerHTML="LED apagado";
+}
